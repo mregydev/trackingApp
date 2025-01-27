@@ -6,6 +6,7 @@ import { AppState } from '../../store';
 import VechileMarker from './VechileMarker';
 import MapTools from './MapTool';
 import { memo, ReactNode } from 'react';
+import { v4 } from 'uuid';
 
 export interface MapProps {
   children?: ReactNode;
@@ -35,7 +36,7 @@ const Map = ({ children }: MapProps) => {
         />
 
         {Array.from({ length: numVechiles }).map((_, index) => (
-          <VechileMarker key={`vehicle-${index}`} vehicleIndex={index} />
+          <VechileMarker key={v4()} vehicleIndex={index} />
         ))}
 
         {children}
