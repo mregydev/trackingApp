@@ -1,0 +1,28 @@
+@import 'variables';
+
+.widgetsSection
+{
+  position: fixed;
+  top: 10%;
+  height: 100vh;
+  display: flex;
+}
+
+.widgets
+{
+  position: absolute;
+}
+
+.dark-mode
+{
+  background: $dark-mode;
+  color:$font-color;
+}
+
+
+
+.light-mode
+{
+  background: $light-mode;
+  color:$font-color;
+}

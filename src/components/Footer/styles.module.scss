@@ -1,0 +1,23 @@
+.footer
+{
+  z-index: 1000;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 90%;
+  margin:auto;
+  display: flex;
+  direction: rtl;
+
+.footerItem
+  {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-left: 10px;
+    width: 100px;
+    padding:10px;
+    color:white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+}

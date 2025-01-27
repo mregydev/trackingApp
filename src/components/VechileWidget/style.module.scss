@@ -1,0 +1,104 @@
+.container {
+    top: 10%;
+    position: fixed;
+    transform: translateX(calc(100vw - 520px));
+    z-index: 1000;
+
+    
+    .listItem {
+        border-bottom: 1px solid white;
+        padding: 10px;
+        cursor: pointer;
+        display: flex;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 20px;
+
+        
+        span {
+            flex: 1;
+        }
+
+
+        .warning,
+        .working {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            /* Makes the div a circle */
+            position: relative;
+            
+            margin-right: 10px;
+            /* Pulsating animation */
+
+        }
+
+        .working {
+            background-color: green;
+            /* Solid red color */
+            box-shadow: 0 0 15px rgba(0, 255, 102, 0.8);
+        }
+
+        .warning {
+            background-color: red;
+            /* Solid red color */
+            animation: pulse 1.5s infinite;
+            /* Pulsating animation */
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+            }
+
+            50% {
+                transform: scale(1.2);
+                box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+            }
+        }
+    }
+
+    .vechileDetails
+    {
+        width: 100%;
+        text-align: left;
+
+        .detailsRow
+        {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 1rem;
+
+            label
+            {
+                font-weight: bold;
+                text-transform: capitalize;
+            }
+        }
+
+        .backButton
+        {
+            margin: auto;
+            display: flex;
+            margin-top: 5px;
+        }
+        .alert
+        {
+            margin-bottom: 20px;
+            font-weight: bold;;
+        }
+    }
+    .active
+        {
+            border:1px solid red;
+        }
+}
