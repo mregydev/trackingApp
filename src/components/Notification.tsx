@@ -13,7 +13,7 @@ const Notifcation = () => {
     <Snackbar
       open={!!notificationMessage}
       message={notificationMessage}
-      autoHideDuration={2000}
+      autoHideDuration={4000}
       onClose={() => {
         dispatch(changeNotifcationMessage(''));
       }}
