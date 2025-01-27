@@ -1,18 +1,18 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState, setSelectedVehicleIndex } from '../../store';
 import styles from './style.module.scss';
-import { Vehicle, VehicleStatus } from '../../types';
+import { Vehicle, VehicleMoveStatus, VehicleWorkingStatus } from '../../types';
 import { Info } from '@mui/icons-material';
 import useZoomToVehicle from '../../hooks/useZoomToVehicle';
 
 export interface VechileListItemProps {
   vechileIndex: number;
-  vehicleStatus?: VehicleStatus;
+  workingStatus: VehicleWorkingStatus;
 }
 
 const VechileListItem = ({
   vechileIndex,
-  vehicleStatus,
+  workingStatus,
 }: VechileListItemProps) => {
 
   const { zoomToVehicle } = useZoomToVehicle(vechileIndex);
@@ -26,7 +26,11 @@ const VechileListItem = ({
     (state: AppState) => state.vechiles[vechileIndex]
   );
 
-  if (vehicleStatus && vehicleStatus !== vehicle.status) {
+  if (
+    (workingStatus === 'working' && vehicle.hasIssue) ||
+    (workingStatus === 'damaged' && !vehicle.hasIssue) ||
+    workingStatus === 'none'
+  ) {
     return null;
   }
 
@@ -41,7 +45,7 @@ const VechileListItem = ({
     <div
       role='button'
       onClick={showVehicleDetails}
-      className={`${styles.listItem} ${isSelected ? styles.active : ''}`}
+      className={`cancel ${styles.listItem} ${isSelected ? styles.active : ''}`}
     >
       <span>{vehicle.name}</span>
       <span>{vehicle.status === 'moving' ? 'Moving' : 'Paused'}</span>

@@ -6,7 +6,8 @@ export interface MinimizeDetails {
   widgetTitle: string;
 }
 
-export type VehicleStatus='moving'|'not'
+export type VehicleMoveStatus='moving'|'paused'
+export type VehicleWorkingStatus = 'working' | 'damaged' | 'all' | 'none';
 export type Locale = 'en' | 'de';
 /**
  * Vehicle
@@ -21,7 +22,7 @@ export interface Vehicle {
   hasIssue: boolean;
   errorMessage: string;
   issueTimer: number;
-  status: VehicleStatus;
+  status: VehicleMoveStatus;
 }
 
 /**

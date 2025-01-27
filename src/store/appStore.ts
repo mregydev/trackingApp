@@ -8,7 +8,8 @@ export interface AppState {
   numVechiles: number;
   selectedVehicleIndex: number;
   locale: Locale;
-  isConnected:boolean;
+  isConnected: boolean;
+  notificationMessage: string;
 }
 
 const initialState: AppState = {
@@ -16,15 +17,23 @@ const initialState: AppState = {
   vechiles: [],
   isDarkMode: false,
   numVechiles: 0,
-  selectedVehicleIndex:-1,
-  locale:'en',
-  isConnected:false
+  selectedVehicleIndex: -1,
+  locale: 'en',
+  isConnected: false,
+  notificationMessage: '',
 };
 
 const appStore = createSlice({
   name: 'appStore',
   initialState,
   reducers: {
+    changeNotifcationMessage: (
+      state: AppState,
+      action: PayloadAction<string>
+    ) => {
+      state.notificationMessage = action.payload;
+    },
+
     changeLocale: (state: AppState, action: PayloadAction<Locale>) => {
       state.locale = action.payload;
     },
@@ -50,6 +59,9 @@ const appStore = createSlice({
         state.numVechiles += 1;
       } else {
         const targetVechile = state.vechiles[targetVechileIndex];
+        if (action.payload.hasIssue && !targetVechile.hasIssue) {
+          state.notificationMessage = `${action.payload.name} has issue ${action.payload.errorMessage}`;
+        }
         targetVechile.attributes = action.payload.attributes;
         targetVechile.position = action.payload.position;
         targetVechile.hasIssue = action.payload.hasIssue;
@@ -78,5 +90,6 @@ export const {
   setSelectedVehicleIndex,
   changeLocale,
   changeConnection,
+  changeNotifcationMessage,
 } = appStore.actions;
 export default appStore.reducer;

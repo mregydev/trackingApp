@@ -1,10 +1,15 @@
 .container {
-    top: 10%;
+    top: 10px;
     position: fixed;
-    transform: translateX(calc(100vw - 520px));
+    transform: translateX(calc(100vw - 510px));
     z-index: 1000;
 
-    
+    .filterSection {
+        display: flex;
+        margin-bottom: 10px;
+        justify-content: center;
+    }
+
     .listItem {
         border-bottom: 1px solid white;
         padding: 10px;
@@ -14,7 +19,7 @@
         text-align: left;
         margin-bottom: 20px;
 
-        
+
         span {
             flex: 1;
         }
@@ -27,7 +32,7 @@
             border-radius: 50%;
             /* Makes the div a circle */
             position: relative;
-            
+
             margin-right: 10px;
             /* Pulsating animation */
 
@@ -65,40 +70,37 @@
         }
     }
 
-    .vechileDetails
-    {
+    .vechileDetails {
         width: 100%;
         text-align: left;
 
-        .detailsRow
-        {
+        .detailsRow {
             display: flex;
             width: 100%;
             justify-content: space-between;
             margin-bottom: 5px;
             font-size: 1rem;
 
-            label
-            {
+            label {
                 font-weight: bold;
                 text-transform: capitalize;
             }
         }
 
-        .backButton
-        {
+        .backButton {
             margin: auto;
             display: flex;
             margin-top: 5px;
         }
-        .alert
-        {
+
+        .alert {
             margin-bottom: 20px;
-            font-weight: bold;;
+            font-weight: bold;
+            ;
         }
     }
-    .active
-        {
-            border:1px solid red;
-        }
+
+    .active {
+        border: 1px solid red;
+    }
 }

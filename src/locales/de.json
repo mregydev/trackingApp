@@ -1,7 +1,9 @@
 {
-    "vehicleWidget.title":"Fahrzeuge",
-    "statisticsWidget.title":"Statistiken",
-    "statisticsWidget.VehicleNum":"Gesamtzahl der Fahrzeuge",
-    "connectionLabel.connected":"Verbunden",
-    "connectionLabel.notConnected":"Getrennt"
+  "vehicleWidget.title": "Fahrzeuge",
+  "statisticsWidget.title": "Statistiken",
+  "statisticsWidget.VehicleNum": "Gesamtzahl der Fahrzeuge",
+  "connectionLabel.connected": "Verbunden",
+  "connectionLabel.notConnected": "Getrennt",
+  "vehicleList.showDamagedOnly": "Beschädigt",
+  "vehicleList.showWorkingOnly": "Funktioniert"
 }

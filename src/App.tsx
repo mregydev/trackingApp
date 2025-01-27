@@ -6,34 +6,41 @@ import VechileWidget from './components/VechileWidget';
 import StatisticsWidget from './components/StatisticsWidget';
 import Map from './components/Map';
 import { useEffect } from 'react';
-import { getSocket } from './DAL/DAL';
-import { AppState, changeConnection, updateVechile } from './store';
+import { getDALInstance, getSocket } from './DAL/DAL';
+import {
+  AppState,
+  changeConnection,
+  changeNotifcationMessage,
+  updateVechile,
+} from './store';
 import { useDispatch, useSelector } from 'react-redux';
 import { Vehicle } from './types';
 import { IntlProvider } from 'react-intl';
 import messages from './locales';
 import ConnectionLabel from './components/ConnectionLabel';
+import { Snackbar } from '@mui/material';
+import Notifcation from './components/Notification';
 
 function App() {
+  
   const dispatch = useDispatch();
   useEffect(() => {
-    const socket = getSocket();
-    socket.on('vehicleUpdate', (vechile: Vehicle) => {
+    const dal = getDALInstance();
+
+    dal.onVehicleUpdate((vechile: Vehicle) => {
       dispatch(updateVechile(vechile));
     });
 
-    socket.on('connect', () => {
-      dispatch(changeConnection(true))
+    dal.onConnect(() => {
+      dispatch(changeConnection(true));
     });
 
-    socket.on('disconnect', () => {
-      dispatch(changeConnection(false))
+    dal.onDisConnect(() => {
+      dispatch(changeConnection(false));
     });
 
     return () => {
-      socket.off('vehicleUpdate');
-      socket.off('connect');
-      socket.off('disconnect');
+      dal.releaseHandlers();
     };
   }, [dispatch]);
 
@@ -47,7 +54,7 @@ function App() {
           <StatisticsWidget></StatisticsWidget>
         </div>
       </Map>
-
+      <Notifcation></Notifcation>
       <Footer></Footer>
     </IntlProvider>
   );

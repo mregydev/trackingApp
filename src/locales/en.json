@@ -1,7 +1,9 @@
 {
-    "vehicleWidget.title":"Vehicles",
-    "statisticsWidget.title":"Statistics",
-    "statisticsWidget.VehicleNum":"Total number of vehicles ",
-    "connectionLabel.connected":"Connected",
-    "connectionLabel.notConnected":"DisConnected"
+  "vehicleWidget.title": "Vehicles",
+  "statisticsWidget.title": "Statistics",
+  "statisticsWidget.VehicleNum": "Total number of vehicles ",
+  "connectionLabel.connected": "Connected",
+  "connectionLabel.notConnected": "DisConnected",
+  "vehicleList.showDamagedOnly": "Damaged",
+  "vehicleList.showWorkingOnly": "Working"
 }

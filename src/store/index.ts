@@ -8,7 +8,8 @@ import reducer, {
   setIsDarkMode,
   setSelectedVehicleIndex,
   changeLocale,
-  changeConnection
+  changeConnection,
+  changeNotifcationMessage
 } from './appStore';
 
 export default configureStore({ reducer });
@@ -22,4 +23,5 @@ export {
   setSelectedVehicleIndex,
   changeLocale,
   changeConnection,
+  changeNotifcationMessage
 };

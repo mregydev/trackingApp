@@ -62,6 +62,7 @@ const Widget = React.memo(
         onResizeStop={enableMapDragging}
         onMouseDown={disbaleMapDragging}
         onMouseLeave={enableMapDragging}
+        cancel='.cancel'
       >
         {!minizedWidgets[id] && (
           <Slide
@@ -76,7 +77,7 @@ const Widget = React.memo(
                     onClick={minimizeClickHandler}
                     aria-label='minimize'
                   >
-                    <span className={styles.minimize}>
+                    <span className={`cancel ${styles.minimize}`}>
                       <HighlightOff fontSize='medium' />
                     </span>
                   </IconButton>
@@ -91,7 +92,7 @@ const Widget = React.memo(
                 className={styles.widgetContent}
                 onMouseDown={disbaleMapDragging}
                 onMouseLeave={enableMapDragging}
-                onWheel={preventScrollPropagation} 
+                onWheel={preventScrollPropagation}
               >
                 {children}
               </CardContent>

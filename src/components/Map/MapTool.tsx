@@ -46,10 +46,10 @@ const MapTools=({bounds}:MapToolProps)=>{
         <span role='button' onClick={fitBounds}>
           <FitScreen />
         </span>
-        <span role='button' onClick={() => changeLocaleHandler('en')}>
+        <span role='button' className={styles.lang} onClick={() => changeLocaleHandler('en')}>
           EN
         </span>
-        <span role='button' onClick={() => changeLocaleHandler('de')}>
+        <span role='button' className={styles.lang} onClick={() => changeLocaleHandler('de')}>
           DE
         </span>
         <span>

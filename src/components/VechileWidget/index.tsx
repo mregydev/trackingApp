@@ -21,10 +21,10 @@ const VechileWidget = () => {
         key={WidgetKeys['details']}
         id={WidgetKeys['details']}
         width={500}
-        height={700}
+        height={800}
         title={$t({id:"vehicleWidget.title"})}
       >
-        {selectedVehicleIndex !== -1 ? <VehicleDetails /> : <VehicleList />}
+        {selectedVehicleIndex !== -1 ? <VehicleDetails  /> : <VehicleList />}
       </Widget>
     </div>
   );
