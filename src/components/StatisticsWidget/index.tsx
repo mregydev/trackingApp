@@ -3,9 +3,10 @@ import { WidgetKeys } from "../../constants"
 import Widget from "../Widget"
 import styles from './style.module.scss';
 import { AppState } from "../../store";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import ReactApexChart from "react-apexcharts";
 import { useIntl } from "react-intl";
+import { ApexOptions } from "apexcharts";
 
 const Statistics=()=>{
     const vechiles=useSelector((state:AppState)=>state.vechiles)
@@ -13,35 +14,30 @@ const Statistics=()=>{
     const numWorkingVechiles=useMemo(()=>vechiles.filter(v=>!v.hasIssue).length,[vechiles])
     const numNotWorkingVechiles=useMemo(()=>vechiles.filter(v=>v.hasIssue).length,[vechiles])
 
-    
-    const chartData = useMemo(
-      () => ({
-        series: [numWorkingVechiles, numNotWorkingVechiles],
-        options: {
-          chart: {
-            width: 380,
-            type: 'pie',
-          },
-          labels: ['Working fine', 'Has Issues'],
-          colors: ['#28a745', '#dc3545'],
-          responsive: [
-            {
-              breakpoint: 480,
-              options: {
-                chart: {
-                  width: 200,
-                },
-                legend: {
-                  position: 'bottom',
-                },
-              },
+    const chartOptions:ApexOptions=  {
+      chart: {
+        width: 380,
+        type: 'pie',
+      },
+      labels: ['Working fine', 'Has Issues'],
+      colors: ['#28a745', '#dc3545'],
+      responsive: [
+        {
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200,
             },
-          ],
+            legend: {
+              position: 'bottom',
+            },
+          },
         },
-      }),
-      [numNotWorkingVechiles, numWorkingVechiles]
-    );
+      ],
+    }
 
+    const chartSeries=[numWorkingVechiles, numNotWorkingVechiles]
+   
     const {$t} =useIntl();
     return (
       <div className={styles.container}>
@@ -55,8 +51,8 @@ const Statistics=()=>{
             {$t({id:"statisticsWidget.VehicleNum"})}: {vechiles.length}
           </div>
           <ReactApexChart
-            options={chartData.options}
-            series={chartData.series}
+            options={chartOptions}
+            series={chartSeries}
             type='pie'
             width={380}
           />
