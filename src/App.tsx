@@ -6,11 +6,10 @@ import VechileWidget from './components/VechileWidget';
 import StatisticsWidget from './components/StatisticsWidget';
 import Map from './components/Map';
 import { useEffect } from 'react';
-import { getDALInstance, getSocket } from './DAL/DAL';
+import { getDALInstance } from './DAL/DAL';
 import {
   AppState,
   changeConnection,
-  changeNotifcationMessage,
   updateVechile,
 } from './store';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,7 +17,6 @@ import { Vehicle } from './types';
 import { IntlProvider } from 'react-intl';
 import messages from './locales';
 import ConnectionLabel from './components/ConnectionLabel';
-import { Snackbar } from '@mui/material';
 import Notifcation from './components/Notification';
 
 function App() {

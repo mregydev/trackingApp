@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { AppState, setSelectedVehicleIndex } from '../../store';
 import styles from './style.module.scss';
-import { Vehicle, VehicleMoveStatus, VehicleWorkingStatus } from '../../types';
+import { Vehicle, VehicleWorkingStatus } from '../../types';
 import { Info } from '@mui/icons-material';
 import useZoomToVehicle from '../../hooks/useZoomToVehicle';
 
@@ -44,6 +44,7 @@ const VechileListItem = ({
   return (
     <div
       role='button'
+      aria-label={vehicle.name}
       onClick={showVehicleDetails}
       className={`cancel ${styles.listItem} ${isSelected ? styles.active : ''}`}
     >

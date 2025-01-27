@@ -30,7 +30,7 @@ const VechileMarker = ({ vehicleIndex }: VechileMarkerProps) => {
     className: 'animated-marker',
     html: `
             <div class="${styles.pulse}">
-              <img src="https://cdn-icons-png.flaticon.com/512/744/744465.png" style="width: 40px; height: 40px;" />
+              <img src="https://cdn-icons-png.flaticon.com/512/744/744465.png" alt="alert vehicle Icon" style="width: 40px; height: 40px;" />
             </div>
           `,
     iconSize: [40, 40], // Size of the marker

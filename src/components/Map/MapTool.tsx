@@ -37,19 +37,29 @@ const MapTools=({bounds}:MapToolProps)=>{
           isDarkMode ? 'dark-mode' : 'light-mode'
         }`}
       >
-        <span role='button' onClick={zoomIn}>
+        <span role='button' aria-label='Zoom In' onClick={zoomIn}>
           <ZoomIn />
         </span>{' '}
-        <span role='button' onClick={zoomOut}>
+        <span role='button' aria-label='Zoom Out' onClick={zoomOut}>
           <ZoomOut />
         </span>{' '}
-        <span role='button' onClick={fitBounds}>
+        <span role='button' aria-label='Fit Screen' onClick={fitBounds}>
           <FitScreen />
         </span>
-        <span role='button' className={styles.lang} onClick={() => changeLocaleHandler('en')}>
+        <span
+          role='button'
+          aria-label='EN'
+          className={styles.lang}
+          onClick={() => changeLocaleHandler('en')}
+        >
           EN
         </span>
-        <span role='button' className={styles.lang} onClick={() => changeLocaleHandler('de')}>
+        <span
+          role='button'
+          aria-label='DE'
+          className={styles.lang}
+          onClick={() => changeLocaleHandler('de')}
+        >
           DE
         </span>
         <span>
