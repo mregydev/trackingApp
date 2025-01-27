@@ -26,17 +26,19 @@ const Widget = React.memo(
   ({ children, title, width = 200,height=400, id }: WidgetProps) => {
     const dispatch = useDispatch();
     const map=useMap();
+
+    const isDarkMode = useSelector((state: AppState) => state.isDarkMode);
+    const minizedWidgets = useSelector(
+      (state: AppState) => state.minizedWidgets
+    );
+
+    
     const minimizeClickHandler = (event: React.MouseEvent) => {
       event.preventDefault();
       dispatch(minimizeWidget({ widgetId: id, widgetTitle: title }));
     };
 
-    const isDarkMode = useSelector((state: AppState) => state.isDarkMode);
-
-    const minizedWidgets = useSelector(
-      (state: AppState) => state.minizedWidgets
-    );
-
+    
     const disbaleMapDragging=()=>{
       map.dragging.disable();
       map.scrollWheelZoom.disable();

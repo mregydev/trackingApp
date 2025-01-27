@@ -14,17 +14,18 @@ const VechileListItem = ({
   vechileIndex,
   workingStatus,
 }: VechileListItemProps) => {
-
   const { zoomToVehicle } = useZoomToVehicle(vechileIndex);
-  
-  const disatch=useDispatch();
 
-  const selectedVehicleIndex = useSelector(
-    (state: AppState) => state.selectedVehicleIndex
-  );
+  const disatch = useDispatch();
+
   const vehicle: Vehicle = useSelector(
     (state: AppState) => state.vechiles[vechileIndex]
   );
+
+  const showVehicleDetails = () => {
+    zoomToVehicle();
+    disatch(setSelectedVehicleIndex(vechileIndex));
+  };
 
   if (
     (workingStatus === 'working' && vehicle.hasIssue) ||
@@ -34,19 +35,12 @@ const VechileListItem = ({
     return null;
   }
 
-  const showVehicleDetails = () => {
-    zoomToVehicle();
-    disatch(setSelectedVehicleIndex(vechileIndex));
-  };
-
-  const isSelected = selectedVehicleIndex === vechileIndex;
-
   return (
     <div
       role='button'
       aria-label={vehicle.name}
       onClick={showVehicleDetails}
-      className={`cancel ${styles.listItem} ${isSelected ? styles.active : ''}`}
+      className={`cancel ${styles.listItem}}`}
     >
       <span>{vehicle.name}</span>
       <span>{vehicle.status === 'moving' ? 'Moving' : 'Paused'}</span>

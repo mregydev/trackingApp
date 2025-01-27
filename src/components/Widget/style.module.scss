@@ -15,15 +15,6 @@ $close-color: white;
 
     .widgetCard {
         background: $widget-background;
-
-        @media screen and (max-width:580px) {
-            position: fixed;
-            left: 0px;
-            top: 0px;
-            width: 100%;
-            height: 100%;
-
-        }
     }
 
 }

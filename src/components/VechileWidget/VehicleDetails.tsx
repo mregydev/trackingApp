@@ -3,6 +3,7 @@ import { AppState, setSelectedVehicleIndex } from "../../store";
 import styles from './style.module.scss';
 import { Vehicle } from "../../types";
 import { Alert, Button } from "@mui/material";
+import { useIntl } from "react-intl";
 
 const VehicleDetails=()=>{
 
@@ -10,6 +11,7 @@ const VehicleDetails=()=>{
     const targetVehicle:Vehicle=useSelector((state:AppState)=>state.vechiles[selectedVehicleIndex])
 
     const dispatch=useDispatch();
+    const {$t} =useIntl();
 
     const resetSelected = () => dispatch(setSelectedVehicleIndex(-1));
 
@@ -39,7 +41,7 @@ const VehicleDetails=()=>{
           variant='outlined'
           onClick={resetSelected}
         >
-          Back
+          {$t({id:'vehicleDetails.back'})}
         </Button>
       </div>
     );

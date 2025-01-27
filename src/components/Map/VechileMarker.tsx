@@ -1,5 +1,5 @@
 import { Marker, Tooltip } from 'react-leaflet';
-import leaftLet from 'leaflet';
+import L from 'leaflet';
 import styles from './style.module.scss';
 import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,51 +7,50 @@ import { AppState, setSelectedVehicleIndex, showWidget } from '../../store';
 import useZoomToVehicle from '../../hooks/useZoomToVehicle';
 import { WidgetKeys } from '../../constants';
 
-export interface VechileMarkerProps {
+export interface VehicleMarkerProps {
   vehicleIndex: number;
 }
 
-const VechileMarker = ({ vehicleIndex }: VechileMarkerProps) => {
-
+const VehicleMarker = ({ vehicleIndex }: VehicleMarkerProps) => {
+  const dispatch = useDispatch();
   const { zoomToVehicle } = useZoomToVehicle(vehicleIndex);
-  const dispatch=useDispatch();
 
-  const vehicle = useSelector(
-    (state: AppState) => state.vechiles[vehicleIndex]
-  );
+  const vehicle = useSelector((state: AppState) => state.vechiles[vehicleIndex]);
 
-
-   const vehicleClickHandler=()=>{
+  const handleVehicleClick = () => {
     zoomToVehicle();
-    dispatch(setSelectedVehicleIndex(vehicleIndex))
-    dispatch(showWidget(WidgetKeys['details']));
-  }
-  const alertVechileIcon = new leaftLet.DivIcon({
+    dispatch(setSelectedVehicleIndex(vehicleIndex));
+    dispatch(showWidget(WidgetKeys.vehicles));
+  };
+
+  const alertVehicleIcon = new L.DivIcon({
     className: 'animated-marker',
     html: `
-            <div class="${styles.pulse}">
-              <img src="https://cdn-icons-png.flaticon.com/512/744/744465.png" alt="alert vehicle Icon" style="width: 40px; height: 40px;" />
-            </div>
-          `,
-    iconSize: [40, 40], // Size of the marker
-    iconAnchor: [20, 40], // Anchor point
+      <div class="${styles.pulse}">
+        <img 
+          src="https://cdn-icons-png.flaticon.com/512/744/744465.png" 
+          alt="Alert Vehicle Icon" 
+          style="width: 40px; height: 40px;" 
+        />
+      </div>
+    `,
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
   });
 
-  const vehicleIcon = new leaftLet.Icon({
+  const defaultVehicleIcon = new L.Icon({
     iconUrl: 'https://cdn-icons-png.flaticon.com/512/744/744465.png',
-    iconSize: [40, 40], // Size of the marker
-    iconAnchor: [20, 40], // Anchor point
+    iconSize: [40, 40],
+    iconAnchor: [20, 40],
   });
 
   return (
     <Marker
       position={[vehicle.position.lat, vehicle.position.lng]}
-      icon={vehicle.hasIssue ? alertVechileIcon : vehicleIcon}
-      eventHandlers={{
-        click: () => vehicleClickHandler(),
-      }}
+      icon={vehicle.hasIssue ? alertVehicleIcon : defaultVehicleIcon}
+      eventHandlers={{ click: handleVehicleClick }}
     >
-      <Tooltip direction='top' offset={[0, -20]} permanent>
+      <Tooltip direction="top" offset={[0, -20]} permanent>
         <div style={{ textAlign: 'center', padding: '5px' }}>
           <strong>{vehicle.name}</strong>
         </div>
@@ -60,4 +59,4 @@ const VechileMarker = ({ vehicleIndex }: VechileMarkerProps) => {
   );
 };
 
-export default memo(VechileMarker);
+export default memo(VehicleMarker);

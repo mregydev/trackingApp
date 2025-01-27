@@ -20,7 +20,7 @@ const Statistics=()=>{
         type: 'pie',
       },
       labels: ['Working fine', 'Has Issues'],
-      colors: ['#28a745', '#dc3545'],
+      colors: ['#28a745', '#D32F2F'],
       responsive: [
         {
           breakpoint: 480,

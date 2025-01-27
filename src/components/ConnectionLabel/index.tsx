@@ -5,23 +5,23 @@ import { useIntl } from 'react-intl';
 
 const ConnectionLabel = () => {
   const isConnected = useSelector((state: AppState) => state.isConnected);
-  
-  const { $t } = useIntl();
+  const { formatMessage } = useIntl();
 
-  const message = $t({
+  const connectionMessage = formatMessage({
     id: isConnected
       ? 'connectionLabel.connected'
       : 'connectionLabel.notConnected',
   });
+
   return (
-    <div
-      className={`${styles.container} 
-      }`}
-    >
+    <div className={styles.container}>
       <div
-        className={`${isConnected ? styles.connected : styles.notConnected}`}
+        className={
+          isConnected ? styles.connected : styles.notConnected
+        }
+        aria-label={isConnected ? 'Connected' : 'Not Connected'}
       ></div>
-      {message}
+      <span>{connectionMessage}</span>
     </div>
   );
 };

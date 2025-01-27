@@ -18,13 +18,13 @@ const VechileWidget = () => {
   return (
     <div className={styles.container}>
       <Widget
-        key={WidgetKeys['details']}
-        id={WidgetKeys['details']}
+        key={WidgetKeys['vehicles']}
+        id={WidgetKeys['vehicles']}
         width={500}
         height={800}
-        title={$t({id:"vehicleWidget.title"})}
+        title={$t({ id: 'vehicleWidget.title' })}
       >
-        {selectedVehicleIndex !== -1 ? <VehicleDetails  /> : <VehicleList />}
+        {selectedVehicleIndex !== -1 ? <VehicleDetails /> : <VehicleList />}
       </Widget>
     </div>
   );
