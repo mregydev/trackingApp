@@ -53,7 +53,7 @@ const VehicleList = () => {
         <FormControlLabel
           control={
             <Checkbox
-              className='cancel'
+            className='cancel'
               checked={workingStatus === 'all' || workingStatus === 'working'}
               onChange={(_: unknown, value: boolean) =>
                 applyFilter('working', value)

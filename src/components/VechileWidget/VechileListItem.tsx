@@ -40,7 +40,7 @@ const VechileListItem = ({
       role='button'
       aria-label={vehicle.name}
       onClick={showVehicleDetails}
-      className={`cancel ${styles.listItem}}`}
+      className={`cancel ${styles.listItem}`}
     >
       <span>{vehicle.name}</span>
       <span>{vehicle.status === 'moving' ? 'Moving' : 'Paused'}</span>
