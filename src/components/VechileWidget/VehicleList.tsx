@@ -46,6 +46,7 @@ const VehicleList = () => {
               onChange={(_: unknown, value: boolean) =>
                 applyFilter('damaged', value)
               }
+              color='success'
             />
           }
           label={$t({ id: 'vehicleList.showDamagedOnly' })}
@@ -53,11 +54,12 @@ const VehicleList = () => {
         <FormControlLabel
           control={
             <Checkbox
-            className='cancel'
+              className='cancel'
               checked={workingStatus === 'all' || workingStatus === 'working'}
               onChange={(_: unknown, value: boolean) =>
                 applyFilter('working', value)
               }
+              color='success'
             />
           }
           label={$t({ id: 'vehicleList.showWorkingOnly' })}
