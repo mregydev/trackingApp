@@ -19,7 +19,7 @@ To run the client side  locally , clone the project and just run   ``` npm run d
 
 
 # Features 
-- Moveable widgets which can be minized for better map view and interactions
+- Draggable and resizable widgets which can be minized for better map view and interactions
 - You can perform identify operations by clicking on the vehiclea and then details related to it will appear in a widget
 - You can see list of vehicles in the list widget and by clicking on any vehicle , map will zoom to its location and details of it will appear
 - There is map tools in the upper left which contains zoom in and zoom out and zoom to full extent which makes map zoom to cologne bounds ( bounds in which vehicles move) and other features
